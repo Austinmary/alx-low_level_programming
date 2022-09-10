@@ -12,9 +12,11 @@ int main(void)
 {
 	int d;
 
-	for (d = '0'; d <='9'; d++){
+	for (d = '0'; d <='9'; d++)
+	{
 	purchar(d);
-	if (d != '9';){
+	if (d != '9')
+	{
 	purchar(',');
 	purchar(' ');
 	}
