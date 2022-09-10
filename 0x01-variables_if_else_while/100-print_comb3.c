@@ -1,13 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 /**
-*
-*
-* Description: print
-*
-*
-*
-*/
+ * main - program that prints the numbers 01 to 89
+ * Mumbers must by separated by , followed by a space
+ * Number shouldbe printed in ascending order with 2 digits
+ * You can only use the putchar function
+ * Return: 0
+ */
+
 int main(void)
 {
 int n1 = 0, n2;
