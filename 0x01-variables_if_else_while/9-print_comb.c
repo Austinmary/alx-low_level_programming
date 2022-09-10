@@ -14,13 +14,13 @@ int main(void)
 
 	for (d = '0'; d <='9'; d++)
 	{
-	purchar(d);
+	putchar(d);
 	if (d != '9')
 	{
-	purchar(',');
-	purchar(' ');
+	putchar(',');
+	putchar(' ');
 	}
 	}
-	purchar('\n')
+	putchar('\n')
 	return (0);
 }
