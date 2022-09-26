@@ -1,14 +1,15 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
- * _memset -> this is a memory set function
+ * _memset ->this is a memory set function
  * @s: string
  * @b: a character
  * @n: an integer
  * Return: a string
  */
 
-char *_memset(char *s, char b, unsigned int n)
+char *_memset(char *s, char b, unsigned int n);
 {
 	unsigned int a;
 
