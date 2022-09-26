@@ -13,8 +13,7 @@ char *_strchr(char *s, char c)
 	
 	for (a = 0; *(s + a); a++)
 	{
-		if (*(s + a) == c)
-			return (s + a);
+		if (*(s + a) == c)			return (s + a);
 	}
 	if (*(s + a) == c)
 		return (s + a);
