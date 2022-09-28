@@ -5,7 +5,7 @@
  * @i: Interger
  * @n: Interger
  *
- * Return: Evaluate sqrt
+ * Return: _evaluate sqrt
  */
 
 int _evaluate(int i, int n)
@@ -18,12 +18,14 @@ int _evaluate(int i, int n)
 
 	else if (i * i == n)
 		return (-1);
+
 	return (-1);
 }
+
 /**
  * _sqrt_recursion - evaluate sqrt
  * @n: Interger
- * Return: sqrt_recursion
+ * Return: _sqrt_recursion
  */
 
 int _sqrt_recursion(int n)
