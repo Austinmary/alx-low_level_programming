@@ -2,7 +2,8 @@
 
 /**
  * _strlen_recursion - Returns the length of a string
- * @s: The length of the string
+ * @s: Pointer block of memory to fill
+ * Return: strlen_recursion
  */
 
 int _strlen_recursion(char *s)
