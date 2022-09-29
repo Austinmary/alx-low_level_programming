@@ -1,57 +1,30 @@
 #include "main.h"
 
-int check_wildcmp(char *s);
-
 /**
- * wildcmp - Returns if a string is wildcmp
- * @s: the string value to be checked
- *
- * Return: integer value
+ * wildcmp - Compare strings
+ * @s1: pointer to string params
+ * @s2: pointer to string params
+ * Return: 0
  */
-int wildcmp(char *s)
-{
-if (*s == '0')
-return (1);
 
-return (check_wildcmp(s));
+int wildcmp(char *s1, char *s2)
+{
+if (*s1 == '\0')
+{
+if (*s2 != '\0' && *s2 == '*')
+{
+return (wildcmp(s1, s2 + 1));
+}
+return (*s2 == '\0');
 }
 
-/**
- * check_wildcmp - check if a string is wildcmp
- * @s: the string value to be checked
- * Return: integer value
- */
-int check_wildcmp(char *s)
+if (*s2 == '*')
 {
-int l = _strlen_recursion(s) - 1;
-
-
-if (*s == s[l])
-{
-s++;
-l--;
+return (wildcmp(s1 + 1, s2) || wildcmp(s1, s2 + 1));
 }
-else
+else if (*s1 == *s2)
 {
+return (wildcmp(s1 + 1, s2 + 1));
+}
 return (0);
-}
-
-return (1);
-}
-
-/**
- * _strlen_recursion - Get the length of a string
- * @s: the string to get the length
- *
- * Return: the string length
- */
-int _strlen_recursion(char *s)
-{
-if (*s == '\0')
-{
-return (0);
-}
-
-s++;
-return (_strlen_recursion(s) + 1);
 }
