@@ -1,17 +1,3 @@
-#include <unistd.h>
-
-/**
- * _putchar - writes the character c to stdout
- * @c: The character to print
- *
- * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
- */
-int _putchar(char c)
-{
-	return (write(1, &c, 1));
-}
-
 #ifndef _LISTS_
 #define _LISTS_
 
@@ -28,6 +14,7 @@ int _putchar(char c)
  * Description: singly linked list node structure
  * for Holberton project
  */
+
 typedef struct list_s
 {
     char *str;
@@ -35,6 +22,7 @@ typedef struct list_s
     struct list_s *next;
 } list_t;
 
+int _putchar(char c);
 size_t print_list(const list_t *h);
 size_t list_len(const list_t *h);
 list_t *add_node(list_t **head, const char *str);
