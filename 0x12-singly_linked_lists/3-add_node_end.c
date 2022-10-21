@@ -1,3 +1,6 @@
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
 #include "lists.h"
 
 /**
@@ -10,32 +13,30 @@
 
 list_t *add_node_end(list_t **head, const char *str)
 {
-    list_t *new, *temp;
-    size_t nchar;
+	list_t *new_node, *temp;
+	unsigned int length = 0;
 
-    new = malloc(sizeof(list_t));
-    if (new == NULL)
-        return (NULL);
+	new_node = malloc(sizeof(list_t));
+	if (new_node == NULL)
+		return (NULL);
 
-    new->str = strdup(str);
+	while (str[length])
+		length++;
 
-    for (nchar = 0; str[nchar]; nchar++)
-        ;
-
-    new->len = nchar;
-    new->next = NULL;
-    temp = *head;
-
-    if (temp == NULL)
-    {
-        *head = new;
-    }
-    else
-    {
-        while (temp->next != NULL)
-            temp = temp->next;
-        temp->next = new;
-    }
-
-    return (*head);
+	new_node->len = length;
+	new_node->str = strdup(str);
+	if (*head == NULL)
+	{
+		new_node->next = *head;
+		*head = new_node;
+	}
+	else
+	{
+		new_node->next = NULL;
+		temp = *head;
+		while (temp->next)
+			temp = temp->next;
+		temp->next = new_node;
+	}
+	return (new_node);
 }
