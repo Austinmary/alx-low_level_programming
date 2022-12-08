@@ -1,40 +1,33 @@
 #include "lists.h"
-
 /**
- * add_dnodeint_end - add a node at the end of a d list
- * @head: the head
- * @n: the int to add
- * Return: address of new node or NULL
+ * add_dnodeint_end - Add a node in the tail
+ * @head: Pointer to direction of the head
+ * @n: The data integer
+ * Return: The direction of the tail node
  */
-
 dlistint_t *add_dnodeint_end(dlistint_t **head, const int n)
 {
-	/* declarations */
-	dlistint_t *new = malloc(sizeof(dlistint_t));
-	dlistint_t *location;
+	dlistint_t *new_mem, *last_dir;
 
-	/*check for null && malloc fail, free new if it exits, return NULL */
-	if (!head || !new)
-		return (new ? free(new), NULL : NULL);
-	/* assign some things to new */
-	new->n = n;
-	new->next = NULL;
-	/* if there are no other nodes make new the first and last */
-	if (!*head)
+	new_mem = malloc(sizeof(dlistint_t));
+
+	if (new_mem == NULL)
+		return (NULL);
+
+	new_mem->n = n;
+	new_mem->next = NULL;
+	new_mem->prev = NULL;
+	if (*head == NULL)
 	{
-		new->prev = NULL;
-		*head = new;
+		*head = new_mem;
+		return (new_mem);
 	}
-	/* otherwise, find the end and install new */
-	else
-	{
-		location = *head;
-		while (location->next)
-		{
-			location = location->next;
-		}
-		location->next = new;
-		new->prev = location;
-	}
-	return (new);
+	last_dir = *head;
+
+	while (last_dir->next != NULL)
+		last_dir = last_dir->next;
+	last_dir->next = new_mem;
+	new_mem->prev = last_dir;
+
+	return (new_mem);
 }
