@@ -11,10 +11,7 @@ int sum_dlistint(dlistint_t *head)
 	/* declarations */
 	int sum = 0;
 
-	/* if list is empty */if (!head)
-		return (0);
-	/* otherwise, add them up */
-	while (head)
+	while (head != NULL)
 	{
 		sum += head->n;
 		head = head->next;
