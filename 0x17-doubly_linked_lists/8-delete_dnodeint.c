@@ -9,38 +9,39 @@
 
 int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 {
-	/* declarations */
-	dlistint_t *location, *temp;
+	dlistint_t *p1, *res_mem = *head;
+	unsigned int counter = 0;
 
-	if (head)
+	if (head == NULL || *head == NULL)
+		return (-1);
+
+	if (index == 0)
 	{
-		/* set location to head, check for index == 0 */
-		location = *head;
-		if (index < 1)
-		{
-			if (!location)
-				return (-1);
-			*head = location->next;
-			if (*head)
-				(*head)->prev = NULL;
-			free(location);
-			return (1);
-		}
-		/* look for the index, delete the right node, or fail if !index node */
-		for (; location; location = location->next, index--)
-		{
-			if (index - 1 == 0)
-			{
-				temp = location->next;
-				if (!temp)
-					break;
-				location->next = temp->next;
-				if(temp->next)
-					temp->next->prev = location;
-				free(temp);
-				return (1);
-			}
-		}
+		*head = res_mem->next;
+		if (res_mem->next == NULL)
+			return (-1);
+		res_mem->next->prev = NULL;
+		free(res_mem);
+		return (1);
 	}
-	return (-1);
+
+	while (counter < index)
+	{
+		if (res_mem->next == NULL)
+			return (-1);
+		res_mem = res_mem->next;
+		counter++;
+	}
+	res_mem->prev->next = res_mem->next;
+	if (res_mem->next)
+		res_mem->next->prev = res_mem->prev;
+	if (res_mem->next == NULL)
+	{
+		p1 = res_mem->prev;
+		p1->next = NULL;
+		free(res_mem);
+		return (1);
+	}
+	free(res_mem);
+	return (1);
 }
