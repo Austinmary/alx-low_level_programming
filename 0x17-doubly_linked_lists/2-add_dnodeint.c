@@ -14,7 +14,7 @@ dlistint_t *add_dnodeint(dlistint_t **head, const int n)
 
 	/* check for null && malloc fail, free new if it exits, return null */
 	if (head || !new)
-		return (new? free(new), NULL : NULL);
+		return (new ? free(new), NULL : NULL);
 	/* assign some things to new node */
 	new->n = n;
 	new->prev = NULL;
